@@ -1,8 +1,14 @@
-# 🍄 Unsupervised Machine Learning Workshop with the Mushroom Dataset
 
+# <div align="center"> 🍄 Unsupervised ML Workshop with Mushroom Dataset 🍄
+</div>
+ 
+<div align="justify">
+  
 This repository contains a practical workshop focused on **unsupervised machine learning**, utilizing **PCA** (Principal Component Analysis) and **Clustering (K-Means)** techniques. It also includes a comparative analysis with a supervised model (Random Forest).
 
 We will be working with the **Mushroom Dataset**, a well-known educational dataset containing information about various types of mushrooms, including their classification as edible or poisonous.
+
+</div>
 
 ## 🧠 Workshop Objectives
 
@@ -66,14 +72,15 @@ The workshop evaluates the performance of supervised Random Forest models under 
 | **X_pca_30** (PCA only)   | 0.9996            | 0.9988        | 0.0005       | 8          | ✅ Very strong. Slightly less informed than X_pca_30_2 (no feature engineering).       |
 
 
-
+<div align="justify">
 - <u> X (raw features): </u> Achieved perfect cross-validation and test accuracy (1.0000) with zero variance, suggesting potential overfitting or data leakage. Although performance appears flawless, such results are highly suspicious and not trustworthy without a robust preprocessing pipeline.
 
 - <u> X_pca_30_2 (PCA-transformed with feature engineering): </u>  Delivered excellent generalization with a cross-validation accuracy of 0.9996 (±0.0005) and test accuracy of 0.9988. The model required less complexity (max_depth=8) and remained highly stable, indicating effective dimensionality reduction and noise filtering.
 
 - <u> X_pca_30 (PCA only): </u>  Also performed extremely well, mirroring the metrics of X_pca_30_2 but without the benefit of additional engineered features. This shows that PCA alone significantly improved model performance by reducing redundancy.
 
+</div>
 
-📌 Final Verdict:
+### 📌 Final Verdict:
 
-<span style="color:#f6f794"> **X_pca_30_2** </span> for production or fair evaluation — it's well-balanced, not overfit, and has stable results across folds.
+**PCA-transformed with feature engineering** (X_pca_30_2 ) for production or fair evaluation — it's well-balanced, not overfit, and has stable results across folds.
