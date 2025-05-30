@@ -48,3 +48,32 @@ You can install them using `pip`:
 
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn scipy kaggle
+```
+Or you can install the requirements here left by doing:
+
+```bash
+pip install -r requirements.txt
+
+```
+## 📊 Summary of Results
+
+The workshop evaluates the performance of supervised Random Forest models under different data preprocessing scenarios:
+
+| Dataset                   | Best CV Accuracy  | Test Accuracy | Std. Dev. CV | Max Depth  | Interpretation                                                                         |
+|---------------------------|-------------------|---------------|--------------|------------|----------------------------------------------------------------------------------------|
+| **X** (raw)               | 1.0000            | 1.0000        | 0.0000       | 10         | ⚠️ Suspiciously perfect. Possible data leakage or overfitting. Model may see too much. |
+| **X_pca_30_2** (PCA + FE) | 0.9996            | 0.9988        | 0.0005       | 8          | ✅ Excellent generalization, reduced noise, and stable performance.                    |
+| **X_pca_30** (PCA only)   | 0.9996            | 0.9988        | 0.0005       | 8          | ✅ Very strong. Slightly less informed than X_pca_30_2 (no feature engineering).       |
+
+
+
+- <u> X (raw features): </u> Achieved perfect cross-validation and test accuracy (1.0000) with zero variance, suggesting potential overfitting or data leakage. Although performance appears flawless, such results are highly suspicious and not trustworthy without a robust preprocessing pipeline.
+
+- <u> X_pca_30_2 (PCA-transformed with feature engineering): </u>  Delivered excellent generalization with a cross-validation accuracy of 0.9996 (±0.0005) and test accuracy of 0.9988. The model required less complexity (max_depth=8) and remained highly stable, indicating effective dimensionality reduction and noise filtering.
+
+- <u> X_pca_30 (PCA only): </u>  Also performed extremely well, mirroring the metrics of X_pca_30_2 but without the benefit of additional engineered features. This shows that PCA alone significantly improved model performance by reducing redundancy.
+
+
+📌 Final Verdict:
+
+<span style="color:#f6f794"> **X_pca_30_2** </span> for production or fair evaluation — it's well-balanced, not overfit, and has stable results across folds.
